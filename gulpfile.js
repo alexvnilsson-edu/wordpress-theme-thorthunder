@@ -83,7 +83,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
  * @param Mixed err
  */
 const errorHandler = r => {
-  notify.onError("\n\n❌  ===> ERROR: <%= error.message %>\n")(r);
+  notify.onError("\n\n❌ <%= error.message %>\n")(r);
   beep();
 
   // this.emit('end');
@@ -131,6 +131,7 @@ gulp.task("copy-wordpress-php", () => {
   return gulp
     .src(config.phpSRC, { base: "./src" })
     .pipe(template(config.templateVariables, { interpolate: /{{(.+?)}}/gs }))
+    .on("error", errorHandler)
     .pipe(gulp.dest(config.phpDestination));
 });
 
@@ -142,6 +143,7 @@ gulp.task("copy-wordpress-php", () => {
 gulp.task("copy-wordpress-root-assets", () => {
   return gulp
     .src(["./src/screenshot.jpg"], { base: "./src" })
+    .on("error", errorHandler)
     .pipe(gulp.dest(config.rootDestination));
 });
 
@@ -165,6 +167,7 @@ gulp.task("copy-wordpress-style", () => {
     )
     .pipe(autoprefixer(config.BROWSERS_LIST))
     .pipe(lineec())
+    .on("error", errorHandler)
     .pipe(gulp.dest(config.rootDestination));
 });
 
@@ -236,6 +239,7 @@ gulp.task("styles", function () {
         })
       )
       //.pipe(filter("*.css"))
+      .on("error", errorHandler)
       .pipe(gulp.dest(config.styleDestination))
   );
 });
@@ -426,9 +430,6 @@ gulp.task("javascript", function () {
       webpackStream({
         entry: {
           main: "./src/assets/js/main.js",
-          "blocks/test": "./src/assets/js/blocks/test.js",
-          "blocks/contact": "./src/assets/js/blocks/contact.js",
-          "blocks/container": "./src/assets/js/blocks/container.js",
         },
         mode: "production",
         output: {
@@ -458,6 +459,7 @@ gulp.task("javascript", function () {
         },
       })
     )
+    .on("error", errorHandler)
     .pipe(gulp.dest(config.jsMainDestination));
 });
 

@@ -1,0 +1,42 @@
+$enable-rounded: false;
+
+//
+// Grafisk profil
+//
+
+// Grunder
+
+$base-font-family: "Roboto", sans-serif;
+$base-font-size-value: 13;
+$base-font-size: $base-font-size-value + px;
+
+$surface-base-bg-color: rgb(32, 32, 32);
+$surface-base-heading-font-family: "Grenze Gotisch", cursive;
+$surface-base-heading-font-weight: 500;
+$surface-base-heading-color: rgb(234, 234, 234);
+$surface-base-text-color: rgb(250, 250, 250);
+
+// Rubriker
+
+$heading-levels: (
+  1: 36,
+  2: 24,
+  3: 18,
+  4: 14,
+  5: 14,
+  6: 14,
+);
+
+@import "./functions";
+
+$heading-level-1: get-heading-size(1);
+$heading-level-2: get-heading-size(2);
+$heading-level-3: get-heading-size(3);
+$heading-level-4: get-heading-size(4);
+
+// Länkar
+
+$link-color: hsl(211, 70%, 46%);
+$link-decoration: none;
+$link-hover-color: darken($link-color, 10%);
+$link-hover-decoration: underline;

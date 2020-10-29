@@ -1,0 +1,15 @@
+/*
+Theme Name: {{ template.name }}
+Text Domain: wordpress.edu.alexvnilsson.se
+Version: {{ template.version }}
+Requires at least: {{ template.engine.php.minimum }}
+Requires PHP: {{ template.engine.php.required }}
+Description: {{ template.description }}
+Author: {{ template.author.name }}
+Author URI: {{ template.author.url }}
+Theme URI: {{ template.metadata.url }}
+License: {{ template.license.name }}
+LicenseURI: {{ template.license.url }}
+
+{{ template.license.content }}
+*/

@@ -1,0 +1,94 @@
+{
+  "name": "thorthunder",
+  "description": "A WPGulp based project.",
+  "version": "0.1.0",
+  "author": "Alex V. Nilsson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexvnilsson-edu/wordpress-theme-thorthunder"
+  },
+  "bugs": {
+    "url": "https://github.com/alexvnilsson-edu/wordpress-theme-thorthunder/issues"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "gulp gulp-autoreload",
+    "styles": "gulp styles",
+    "stylesRTL": "gulp stylesRTL",
+    "vendorsJS": "gulp vendorsJS",
+    "customJS": "gulp customJS",
+    "images": "gulp images",
+    "clearCache": "gulp clearCache",
+    "translate": "gulp translate"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.0.0",
+    "animejs": "^3.2.0",
+    "babel-loader": "^8.1.0",
+    "beepbeep": "^1.2.2",
+    "bootstrap": "^4.5.2",
+    "browser-sync": "^2.11.1",
+    "browserify": "^16.5.2",
+    "css-loader": "^4.3.0",
+    "del": "^6.0.0",
+    "easydropdown": "^4.2.0",
+    "eslint": "^5.5.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "gsap": "^3.5.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-cache": "^1.0.2",
+    "gulp-concat": "^2.5.2",
+    "gulp-filter": "^5.1.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-remember": "^1.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-rtlcss": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-shell": "^0.8.0",
+    "gulp-sort": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-template": "^5.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglifycss": "^1.0.6",
+    "gulp-wp-pot": "^2.0.7",
+    "gulp-zip": "^5.0.2",
+    "gulplog": "^1.0.0",
+    "mini-css-extract-plugin": "^0.11.3",
+    "mobile-detect": "^1.4.4",
+    "prettier": "2.1.2",
+    "sass-loader": "^10.0.2",
+    "webpack": "^4.44.2",
+    "webpack-stream": "^6.1.0"
+  },
+  "wordpressTemplate": {
+    "engine": {
+      "php": {
+        "minimum": "5.3",
+        "required": "5.5.1"
+      }
+    },
+    "metadata": {
+      "url": "https://edu.alexvnilsson.se/development/wordpress/themes/alexvnilsson"
+    },
+    "author": {
+      "url": "https://edu.alexvnilsson.se"
+    },
+    "license": {
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^5.0.2",
+    "@wordpress/blocks": "^6.23.0"
+  }
+}

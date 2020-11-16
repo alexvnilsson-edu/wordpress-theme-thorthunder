@@ -1,4 +1,7 @@
-$footer-text-gray: rgb(75, 75, 75);
+@import "./variables";
+
+$footer-border-color: lighten($surface-base-bg-color, 12%);
+$footer-text-color: darken($surface-base-text-color, 25%);
 
 body > div.footer {
   display: flex;
@@ -8,7 +11,7 @@ body > div.footer {
 
   margin-top: 3em;
 
-  border-top: 1px solid rgb(200, 200, 200);
+  border-top: 1px solid $footer-border-color;
 
   font-size: 0.82em;
   font-weight: 500;
@@ -19,7 +22,7 @@ body > div.footer {
 
     &.copyright {
       margin-right: auto;
-      color: $footer-text-gray;
+      color: $footer-text-color;
     }
 
     &.separate {
@@ -62,7 +65,7 @@ body > div.footer {
 
       &.copyright {
         margin: 0;
-        color: $footer-text-gray;
+        color: $footer-text-color;
       }
 
       &.separate {

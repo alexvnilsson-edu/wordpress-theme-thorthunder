@@ -36,7 +36,5 @@ $heading-level-4: get-heading-size(4);
 
 // Länkar
 
-$link-color: hsl(211, 70%, 46%);
+$link-color: rgb(200, 145, 225);
 $link-decoration: none;
-$link-hover-color: darken($link-color, 10%);
-$link-hover-decoration: underline;

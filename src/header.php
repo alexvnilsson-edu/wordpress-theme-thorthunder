@@ -17,6 +17,16 @@ use ThorThunder\WordPressTheme\Module\Header;
 <html <?php language_attributes(); ?>>
 
 <head>
+    <?php if (is_single() || is_page() || is_home()) { ?>
+    <meta name="googlebot" content="index,noarchive,follow,noodp" />
+    <meta name="robots" content="all,index,follow" />
+    <meta name="msnbot" content="all,index,follow" />
+    <?php } else { ?>
+    <meta name="googlebot" content="noindex,noarchive,follow,noodp" />
+    <meta name="robots" content="noindex,follow" />
+    <meta name="msnbot" content="noindex,follow" />
+    <?php }?>
+
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

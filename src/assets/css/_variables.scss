@@ -4,6 +4,10 @@ $enable-rounded: false;
 // Grafisk profil
 //
 
+// Grundfärger
+
+$primary: rgb(0, 140, 255);
+
 // Grunder
 
 $base-font-family: "Roboto", sans-serif;
@@ -34,7 +38,15 @@ $heading-level-2: get-heading-size(2);
 $heading-level-3: get-heading-size(3);
 $heading-level-4: get-heading-size(4);
 
+// Formulär
+
+$_input_base_color: lighten($surface-base-bg-color, 12%);
+
+$input-bg: $_input_base_color;
+$input-border-color: lighten($_input_base_color, 5%);
+
 // Länkar
 
-$link-color: rgb(200, 145, 225);
+$link-color: $primary;
 $link-decoration: none;
+$link-hover-color: darken($link-color, 5%);

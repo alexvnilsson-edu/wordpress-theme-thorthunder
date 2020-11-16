@@ -21,21 +21,17 @@ class Enqueue
     public static function register_blocks()
     {
         // Load scripts
-        wp_register_script('alexvnilsson-block-contact', get_template_directory_uri() . '/assets/js/blocks/contact.js', array('wp-blocks', 'wp-element'), '{{ template.version }}');
-        wp_register_script('alexvnilsson-block-container', get_template_directory_uri() . '/assets/js/blocks/container.js', array('wp-blocks', 'wp-element'), '{{ template.version }}');
+        wp_register_script('thorthunder-block-contact', get_template_directory_uri() . '/assets/js/blocks/contact.js', array('wp-blocks', 'wp-element'), '{{ template.version }}');
 
         // Register
-        register_block_type('alexvnilsson/contact', array(
-            'editor_script' => 'alexvnilsson-block-contact'
-        ));
-        register_block_type('alexvnilsson/container', array(
-            'editor_script' => 'alexvnilsson-block-container'
+        register_block_type('thorthunder/contact', array(
+            'editor_script' => 'thorthunder-block-contact'
         ));
     }
 
     public static function load_admin_assets()
     {
-        wp_enqueue_style('alexvnilsson-editor-style', get_template_directory_uri() . '/assets/css/editor/style.css', array(), '{{ template.version }}', 'all');
+        wp_enqueue_style('thorthunder-editor-style', get_template_directory_uri() . '/assets/css/editor/style.css', array(), '{{ template.version }}', 'all');
     }
 
     public static function load_assets()
@@ -45,9 +41,9 @@ class Enqueue
         wp_enqueue_style('vendor-googlefont-materialicon', 'https://fonts.googleapis.com/icon?family=Material+Icons', false);
 
         // Project
-        wp_enqueue_style('alexvnilsson-main-style', get_template_directory_uri() . '/assets/css/main/style.css', array(), '{{ template.version }}', 'all');
+        wp_enqueue_style('thorthunder-main-style', get_template_directory_uri() . '/assets/css/main/style.css', array(), '{{ template.version }}', 'all');
 
-        // wp_enqueue_script('alexvnilsson-vendor', get_template_directory_uri() . "/assets/js/vendor.min.js", array(), '{{ template.version }}', true);
-        wp_enqueue_script('alexvnilsson-main', get_template_directory_uri() . "/assets/js/main.js", array(), '{{ template.version }}', true);
+        // wp_enqueue_script('thorthunder-vendor', get_template_directory_uri() . "/assets/js/vendor.min.js", array(), '{{ template.version }}', true);
+        wp_enqueue_script('thorthunder-main', get_template_directory_uri() . "/assets/js/main.js", array(), '{{ template.version }}', true);
     }
 }

@@ -17,7 +17,7 @@ use ThorThunder\WordPressTheme\Module\Footer;
 
 <div class="container footer">
     <div class="field copyright">
-        &copy; <?php echo date("Y") ?> Alex V. Nilsson
+        &copy; <?php echo date("Y") ?> <?php bloginfo('name'); ?>
     </div>
 
     <div class="field separate"></div>

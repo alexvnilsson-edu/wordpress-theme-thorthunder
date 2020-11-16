@@ -8,8 +8,6 @@ $enable-rounded: false;
 
 $primary: rgb(0, 140, 255);
 
-// Grunder
-
 $base-font-family: "Roboto", sans-serif;
 $base-font-size-value: 13;
 $base-font-size: $base-font-size-value + px;
@@ -19,6 +17,8 @@ $surface-base-heading-font-family: "Grenze Gotisch", cursive;
 $surface-base-heading-font-weight: 500;
 $surface-base-heading-color: rgb(234, 234, 234);
 $surface-base-text-color: rgb(250, 250, 250);
+
+$text-muted: darken($surface-base-text-color, 25%);
 
 // Rubriker
 
@@ -40,13 +40,18 @@ $heading-level-4: get-heading-size(4);
 
 // Formulär
 
-$_input_base_color: lighten($surface-base-bg-color, 12%);
+$input-bg: lighten($surface-base-bg-color, 6%);
+$input-color: darken($surface-base-text-color, 12%);
 
-$input-bg: $_input_base_color;
-$input-border-color: lighten($_input_base_color, 5%);
+$input-border-color: lighten($input-bg, 6%);
+
+$input-placeholder-color: darken($input-color, 48%);
+
+$input-focus-bg: darken($input-bg, 3%);
+$input-focus-border-color: rgba(50, 100, 150, 0.5);
 
 // Länkar
 
 $link-color: $primary;
 $link-decoration: none;
-$link-hover-color: darken($link-color, 5%);
+$link-hover-color: darken($link-color, 6%);

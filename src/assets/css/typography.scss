@@ -16,3 +16,17 @@ h6 {
     font-size: get-heading-size($level);
   }
 }
+
+.font {
+  &-size {
+    &-larger {
+      font-size: 1.5em;
+    }
+  }
+
+  &-weight {
+    &-medium {
+      font-weight: 500;
+    }
+  }
+}

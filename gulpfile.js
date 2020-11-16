@@ -430,6 +430,7 @@ gulp.task("javascript", function () {
       webpackStream({
         entry: {
           main: "./src/assets/js/main.js",
+          "blocks/contact": "./src/assets/js/blocks/contact.js",
         },
         mode: "production",
         output: {

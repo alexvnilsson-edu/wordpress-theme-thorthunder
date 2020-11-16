@@ -78,18 +78,6 @@ const zip = require("gulp-zip"); // Zip files and/or folders.
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 /**
- * Custom Error Handler.
- *
- * @param Mixed err
- */
-const errorHandler = r => {
-  notify.onError("\n\n❌ <%= error.message %>\n")(r);
-  beep();
-
-  // this.emit('end');
-};
-
-/**
  * Task: `browser-sync`.
  *
  * Live Reloads, CSS injections, Localhost tunneling.
@@ -130,8 +118,8 @@ gulp.task("clean-dest", () => {
 gulp.task("copy-wordpress-php", () => {
   return gulp
     .src(config.phpSRC, { base: "./src" })
+    .pipe(plumber())
     .pipe(template(config.templateVariables, { interpolate: /{{(.+?)}}/gs }))
-    .on("error", errorHandler)
     .pipe(gulp.dest(config.phpDestination));
 });
 
@@ -143,7 +131,7 @@ gulp.task("copy-wordpress-php", () => {
 gulp.task("copy-wordpress-root-assets", () => {
   return gulp
     .src(["./src/screenshot.jpg"], { base: "./src" })
-    .on("error", errorHandler)
+    .pipe(plumber())
     .pipe(gulp.dest(config.rootDestination));
 });
 
@@ -156,7 +144,7 @@ gulp.task("copy-wordpress-style", () => {
   return gulp
     .src("./src/style.scss")
     .pipe(template(config.templateVariables, { interpolate: /{{(.+?)}}/gs }))
-    .pipe(plumber(errorHandler))
+    .pipe(plumber())
     .pipe(
       sass({
         includePaths: ["node_modules"],
@@ -167,7 +155,6 @@ gulp.task("copy-wordpress-style", () => {
     )
     .pipe(autoprefixer(config.BROWSERS_LIST))
     .pipe(lineec())
-    .on("error", errorHandler)
     .pipe(gulp.dest(config.rootDestination));
 });
 
@@ -211,6 +198,7 @@ gulp.task("styles", function () {
   return (
     gulp
       .src(["src/assets/css/**/*.scss"])
+      .pipe(plumber())
       .pipe(
         webpackStream({
           entry: {
@@ -239,7 +227,6 @@ gulp.task("styles", function () {
         })
       )
       //.pipe(filter("*.css"))
-      .on("error", errorHandler)
       .pipe(gulp.dest(config.styleDestination))
   );
 });
@@ -262,7 +249,7 @@ gulp.task("styles", function () {
 gulp.task("stylesRTL", () => {
   return gulp
     .src(config.styleSRC, { allowEmpty: true })
-    .pipe(plumber(errorHandler))
+    .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(
       sass({
@@ -304,7 +291,7 @@ gulp.task("stylesRTL", () => {
 gulp.task("vendorsJS", () => {
   return gulp
     .src(config.jsVendorSRC, { since: gulp.lastRun("vendorsJS") }) // Only run on changed files.
-    .pipe(plumber(errorHandler))
+    .pipe(plumber())
     .pipe(
       babel({
         presets: [
@@ -348,7 +335,7 @@ gulp.task("customJS", () => {
     .src(config.jsCustomSRC, {
       since: gulp.lastRun("customJS"),
     }) // Only run on changed files.
-    .pipe(plumber(errorHandler))
+    .pipe(plumber())
     .pipe(
       babel({
         presets: [
@@ -392,7 +379,7 @@ gulp.task("mainJS", () => {
     .src(config.jsMainSRC, {
       since: gulp.lastRun("mainJS"),
     }) // Only run on changed files.
-    .pipe(plumber(errorHandler))
+    .pipe(plumber())
     .pipe(
       babel({
         presets: [
@@ -426,6 +413,7 @@ gulp.task("mainJS", () => {
 gulp.task("javascript", function () {
   return gulp
     .src(["src/assets/js/**/*.js"])
+    .pipe(plumber())
     .pipe(
       webpackStream({
         entry: {
@@ -460,7 +448,6 @@ gulp.task("javascript", function () {
         },
       })
     )
-    .on("error", errorHandler)
     .pipe(gulp.dest(config.jsMainDestination));
 });
 
@@ -483,6 +470,7 @@ gulp.task("javascript", function () {
 gulp.task("images", () => {
   return gulp
     .src(config.imgSRC)
+    .pipe(plumber())
     .pipe(
       cache(
         imagemin([

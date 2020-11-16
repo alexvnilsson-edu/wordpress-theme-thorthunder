@@ -1,5 +1,5 @@
 <?php
-namespace AlexVNilsson\WordPressTheme\Core;
+namespace ThorThunder\WordPressTheme\Core;
 
 class Singleton
 {

@@ -13,9 +13,9 @@ require_once(THEME_PATH . "/includes/Enqueue.php");
 require_once(THEME_PATH . "/includes/ThemeSupport.php");
 require_once(THEME_PATH . "/includes/Module/ShortcodeSubpages.php");
 
-use AlexVNilsson\WordPressTheme\Enqueue;
-use AlexVNilsson\WordPressTheme\Module\ShortcutSubpages;
-use AlexVNilsson\WordPressTheme\ThemeSupport;
+use ThorThunder\WordPressTheme\Enqueue;
+use ThorThunder\WordPressTheme\Module\ShortcutSubpages;
+use ThorThunder\WordPressTheme\ThemeSupport;
 
 Enqueue::initialize();
 ThemeSupport::initialize();

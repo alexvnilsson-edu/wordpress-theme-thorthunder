@@ -5,7 +5,7 @@
  * @package {{ template.name }}
  * @version {{ templateVersion }}
  */
-namespace AlexVNilsson\WordPressTheme\Module;
+namespace ThorThunder\WordPressTheme\Module;
 
 class Post_Author
 {

@@ -6,7 +6,7 @@
  * @version {{ templateVersion }}
  */
 
-use AlexVNilsson\WordPressTheme\Module\Posts;
+use ThorThunder\WordPressTheme\Module\Posts;
 
 ?>
 

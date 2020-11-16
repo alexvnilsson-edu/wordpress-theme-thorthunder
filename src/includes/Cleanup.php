@@ -5,7 +5,7 @@
  * @package {{ template.name }}
  * @version {{ templateVersion }}
  */
-namespace AlexVNilsson\WordPressTheme;
+namespace ThorThunder\WordPressTheme;
 
 class Cleanup
 {

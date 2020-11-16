@@ -5,10 +5,10 @@
  * @package {{ template.name }}
  * @version {{ templateVersion }}
  */
-namespace AlexVNilsson\WordPressTheme\Module;
+namespace ThorThunder\WordPressTheme\Module;
 
-use AlexVNilsson\WordPressTheme\Core\Menu;
-use AlexVNilsson\WordPressTheme\Core\MenuItem;
+use ThorThunder\WordPressTheme\Core\Menu;
+use ThorThunder\WordPressTheme\Core\MenuItem;
 
 class Header
 {

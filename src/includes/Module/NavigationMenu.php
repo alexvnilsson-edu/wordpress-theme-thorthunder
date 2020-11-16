@@ -5,10 +5,10 @@
  * @package {{ template.name }}
  * @version {{ templateVersion }}
  */
-namespace AlexVNilsson\WordPressTheme\Module;
+namespace ThorThunder\WordPressTheme\Module;
 
-use AlexVNilsson\WordPressTheme\Module\Header;
-use AlexVNilsson\WordPressTheme\Core\Log;
+use ThorThunder\WordPressTheme\Module\Header;
+use ThorThunder\WordPressTheme\Core\Log;
 
 class NavigationMenu
 {

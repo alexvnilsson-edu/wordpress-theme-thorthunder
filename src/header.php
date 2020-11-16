@@ -8,8 +8,8 @@
 
 require_once(THEME_PATH . "/includes/Module/Header.php");
 
-use AlexVNilsson\WordPressTheme\Core\Menu;
-use AlexVNilsson\WordPressTheme\Module\Header;
+use ThorThunder\WordPressTheme\Core\Menu;
+use ThorThunder\WordPressTheme\Module\Header;
 
 ?>
 

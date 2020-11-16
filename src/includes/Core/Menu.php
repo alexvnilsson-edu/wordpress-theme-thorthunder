@@ -5,7 +5,7 @@
  * @package {{ template.name }}
  * @version {{ templateVersion }}
  */
-namespace AlexVNilsson\WordPressTheme\Core;
+namespace ThorThunder\WordPressTheme\Core;
 
 class MenuItem
 {

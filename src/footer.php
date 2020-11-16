@@ -9,7 +9,7 @@
 
 require_once(THEME_PATH . "/includes/Module/Footer.php");
 
-use AlexVNilsson\WordPressTheme\Module\Footer;
+use ThorThunder\WordPressTheme\Module\Footer;
 
 ?>
 

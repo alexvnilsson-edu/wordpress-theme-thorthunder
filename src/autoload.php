@@ -1,5 +1,5 @@
 <?php
-namespace AlexVNilsson\WordPressTheme;
+namespace ThorThunder\WordPressTheme;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;

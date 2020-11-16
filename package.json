@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "gulp gulp-autoreload",
+    "start": "gulp",
     "styles": "gulp styles",
     "stylesRTL": "gulp stylesRTL",
     "vendorsJS": "gulp vendorsJS",

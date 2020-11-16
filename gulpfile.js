@@ -541,26 +541,6 @@ gulp.task("package-theme", function () {
 });
 
 /**
- * Task: `gulp-autoreload`
- */
-gulp.task("gulp-autoreload", function () {
-  var p;
-
-  gulp.watch("gulpfile.js", spawnChildren);
-  spawnChildren();
-
-  function spawnChildren(e) {
-    // kill previous spawned process
-    if (p) {
-      p.kill();
-    }
-
-    // `spawn` a child `gulp` process linked to the parent `stdio`
-    p = spawn("gulp", undefined, { stdio: "inherit" });
-  }
-});
-
-/**
  * Watch Tasks.
  *
  * Watches for file changes and runs specific tasks.

@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
                 </div>
                 <div class="form-group col-md-2 mb-0">
                     <select id="numberOperation" class="form-control" aria-placeholder="Operation">
-                        <option selected>Välj operation...</option>
+                        <option selected>Välj räknesätt...</option>
                         <option value="addera">+</option>
                         <option value="subtrahera">-</option>
                         <option value="multiplicera">×</option>

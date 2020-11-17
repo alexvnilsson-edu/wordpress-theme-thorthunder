@@ -7,8 +7,7 @@
     ],
     "require": {
         "wpackagist-plugin/wp-super-cache": "1.6.*",
-        "wpackagist-plugin/bbpress": "2.5.*",
-		"monolog/monolog": "^2.1"
+        "wpackagist-plugin/bbpress": "2.5.*"
     },
     "extra": {
         "installer-paths": {

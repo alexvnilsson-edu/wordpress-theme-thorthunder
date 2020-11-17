@@ -21,7 +21,7 @@ if (isset($_POST["submit"])) {
         <div class="form-group">
             <div class="form-row">
                 <div class="col">
-                    <input type="text" name="firstname" class="form-control" placeholder="Förnamn">
+                    <input type="text" name="firstname" class="form-control" placeholder="Förnamn" required>
                 </div>
                 <div class="col">
                     <input type="text" name="lastname" class="form-control" placeholder="Efternamn">
@@ -30,13 +30,13 @@ if (isset($_POST["submit"])) {
         </div>
         <div class="form-group">
             <input type="email" name="email" class="form-control" placeholder="E-postadress"
-                aria-describedby="emailHelp">
+                aria-describedby="emailHelp" required>
             <small id="emailHelp" class="form-text text-muted">Vi använder endast din e-postadress för att svara på ditt
                 meddelande.</small>
         </div>
         <div class="form-group">
             <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                placeholder="Meddelande"></textarea>
+                placeholder="Meddelande" required></textarea>
         </div>
         <div class="d-flex justify-content-end">
             <button type="submit" name="submit" class="btn btn-primary">Skicka</button>

@@ -1,33 +1,34 @@
 <?php
-/**
- * Fil som innehåller funktioner för sidhuvudet.
- *
- * @package {{ template.name }}
- * @version {{ templateVersion }}
- */
-namespace ThorThunder\WordPressTheme\Module;
+    /**
+     * Fil som innehåller funktioner för sidhuvudet.
+     *
+     * @package {{ template.name }}
+     * @version {{ templateVersion }}
+     */
+    namespace ThorThunder\WordPressTheme\Module;
 
-class Post_Author
-{
-    public string $name;
-    public ?string $url;
-
-    public function __construct(string $name, ?string $url)
+    class Post_Author
     {
-        $this->name = $name;
-        $this->url = $url;
+        public $name = null;
+        public $url = null;
+
+        public function __construct($name, $url)
+        {
+            $this->name = $name;
+            $this->url = $url;
+        }
     }
-}
 
-class Posts
-{
-    public static function render_post()
+    class Posts
     {
-        $post = get_post();
-        $post_date = date('Y-m-d', strtotime($post->post_date));
-        $post_permalink = get_permalink($post);
+        public static function render_post()
+        {
+            $post = get_post();
+            $post_date = date('Y-m-d', strtotime($post->post_date));
+            $post_permalink = get_permalink($post);
 
-        $author = new Post_Author(get_the_author_meta('display_name', $post->post_author), get_the_author_meta('user_url', $post->post_author)); ?>
+            $author = new Post_Author(get_the_author_meta('display_name', $post->post_author), get_the_author_meta('user_url', $post->post_author));
+        ?>
 <div class="post">
     <?php if (is_single()): ?>
     <h2>
@@ -37,7 +38,7 @@ class Posts
     <a href="<?php echo $post_permalink ?>" class="h2 text-body no-decoration">
         <?php echo $post->post_title ?>
     </a>
-    <?php endif; ?>
+    <?php endif;?>
     <div class="content">
         <?php echo $post->post_content ?>
     </div>
@@ -55,5 +56,5 @@ class Posts
     </div>
 </div>
 <?php
-    }
+}
 }

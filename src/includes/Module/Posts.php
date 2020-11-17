@@ -7,6 +7,8 @@
      */
     namespace ThorThunder\WordPressTheme\Module;
 
+    use ErrorException;
+
     class Post_Author
     {
         public $name = null;
@@ -21,9 +23,18 @@
 
     class Posts
     {
-        public static function render_post()
+        public static function render_post($postId)
         {
-            $post = get_post();
+            if (is_null($postId)) {
+                throw new ErrorException("Argument post is null.");
+            }
+
+            $post = get_post($postId);
+
+            if (is_null($post)) {
+                throw new ErrorException("Found no post with id $postId.");
+            }
+
             $post_date = date('Y-m-d', strtotime($post->post_date));
             $post_permalink = get_permalink($post);
 
@@ -56,5 +67,5 @@
     </div>
 </div>
 <?php
-}
+    }
 }

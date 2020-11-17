@@ -173,15 +173,9 @@ gulp.task("wordpress-composer-copy", () => {
 
 gulp.task(
   "wordpress-composer-install",
-  shell.task(
-    [
-      "composer install --prefer-dist --no-progress --quiet",
-      "composer update --prefer-dist --no-progress --quiet",
-    ],
-    {
-      cwd: config.rootDestination,
-    }
-  )
+  shell.task(["composer install --prefer-dist", "composer update --prefer-dist"], {
+    cwd: config.rootDestination,
+  })
 );
 
 gulp.task(

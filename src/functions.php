@@ -9,9 +9,9 @@ define('PLUGIN_PATH', get_template_directory());
 define('THEME_PATH', PLUGIN_PATH);
 
 // require_once(THEME_PATH . "/includes/Core/Log.php");
-require_once(THEME_PATH . "/includes/Enqueue.php");
-require_once(THEME_PATH . "/includes/ThemeSupport.php");
-require_once(THEME_PATH . "/includes/Module/ShortcodeSubpages.php");
+require_once THEME_PATH . "/includes/Enqueue.php";
+require_once THEME_PATH . "/includes/ThemeSupport.php";
+require_once THEME_PATH . "/includes/Module/ShortcodeSubpages.php";
 
 use ThorThunder\WordPressTheme\Enqueue;
 use ThorThunder\WordPressTheme\Module\ShortcutSubpages;

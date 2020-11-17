@@ -1,44 +1,44 @@
 <?php
-/**
- * Fil som innehåller funktioner för sidhuvudet.
- *
- * @package {{ template.name }}
- * @version {{ templateVersion }}
- */
-namespace ThorThunder\WordPressTheme\Module;
+    /**
+     * Fil som innehåller funktioner för sidhuvudet.
+     *
+     * @package {{ template.name }}
+     * @version {{ templateVersion }}
+     */
+    namespace ThorThunder\WordPressTheme\Module;
 
-use ThorThunder\WordPressTheme\Core\Menu;
-use ThorThunder\WordPressTheme\Core\MenuItem;
+    use ThorThunder\WordPressTheme\Core\Menu;
 
-class Header
-{
-    public static function get_custom_logo_url()
+    class Header
     {
-        $custom_logo_id = get_theme_mod('custom_logo');
-        $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
+        public static function get_custom_logo_url()
+        {
+            $custom_logo_id = get_theme_mod('custom_logo');
+            $logo = wp_get_attachment_image_src($custom_logo_id, 'full');
 
-        return $logo;
-    }
-
-    public static function render_nav_menu($menu_location_name = null, $container_name = null)
-    {
-        $locations = get_nav_menu_locations();
-        if (!array_key_exists($menu_location_name, $locations)) {
-            return false;
+            return $logo;
         }
-        $menu_items = Menu::get_nav_menu_items($locations[$menu_location_name]); ?>
-<div class="<?php echo join(' ', array('nav-wrapper', $container_name)) ?>">
+
+        public static function render_nav_menu($menu_location_name = null, $container_name = null)
+        {
+            $locations = get_nav_menu_locations();
+            if (!array_key_exists($menu_location_name, $locations)) {
+                return false;
+            }
+            $menu_items = Menu::get_nav_menu_items($locations[$menu_location_name]);
+        ?>
+<div class="<?php echo implode(' ', array('nav-wrapper', $container_name)) ?>">
     <?php if ($menu_items && !empty($menu_items)): ?>
     <ul class="nav">
         <?php foreach ($menu_items as $item): ?>
-        <?php $hasDescendants = ($item->children && count($item->children) > 0); ?>
+        <?php $hasDescendants = ($item->children && count($item->children) > 0);?>
 
-        <li class="<?php echo join(' ', array('item', $hasDescendants ? 'parent' : '')) ?>">
+        <li class="<?php echo implode(' ', array('item', $hasDescendants ? 'parent' : '')) ?>">
             <a href="<?php echo $item->url; ?>" class="link">
                 <?php echo $item->title; ?>
                 <?php if ($hasDescendants): ?>
                 <i class="icon material-icons">expand_more</i>
-                <?php endif ?>
+                <?php endif?>
             </a>
 
             <?php if (!empty($item->children)): ?>
@@ -49,14 +49,14 @@ class Header
                         <?php echo $child->title; ?>
                     </a>
                 </li>
-                <?php endforeach ?>
+                <?php endforeach?>
             </ul>
-            <?php endif ?>
+            <?php endif?>
         </li>
-        <?php endforeach ?>
+        <?php endforeach?>
     </ul>
-    <?php endif ?>
+    <?php endif?>
 </div>
 <?php
-    }
+}
 }

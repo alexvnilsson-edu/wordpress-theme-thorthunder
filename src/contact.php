@@ -1,20 +1,20 @@
 <?php
-/**
- * Template Name: Kontaktformulär
- *
- * Template file for handling form submissions.
- *
- * @package {{ template.name }}
- * @version {{ templateVersion }}
- */
+    /**
+     * Template Name: Kontaktformulär
+     *
+     * Template file for handling form submissions.
+     *
+     * @package {{ template.name }}
+     * @version {{ templateVersion }}
+     */
 
-if (isset($_POST["submit"])) {
-    echo "submitted.";
-}
+    if (isset($_POST["submit"])) {
+        echo "submitted.";
+    }
 
 ?>
 
-<?php get_header(); ?>
+<?php get_header();?>
 
 <div class="container mt-5">
     <form method="post">
@@ -45,4 +45,4 @@ if (isset($_POST["submit"])) {
 </div>
 
 
-<?php get_footer(); ?>
+<?php get_footer();?>

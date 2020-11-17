@@ -419,7 +419,6 @@ gulp.task("javascript", function () {
         entry: {
           main: "./src/assets/js/main.js",
           "blocks/contact": "./src/assets/js/blocks/contact.js",
-          "standalone/contact_form": "./src/assets/js/standalone/contact_form.js",
         },
         mode: "production",
         output: {

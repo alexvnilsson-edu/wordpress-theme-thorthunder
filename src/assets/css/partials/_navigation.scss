@@ -1,6 +1,3 @@
-@import "./variables";
-@import "./vendor";
-
 $nav-brand-link-color: $surface-base-heading-color;
 $nav-page-item-link-color: darken($surface-base-heading-color, 12%);
 $nav-page-item-link-active-color: lighten($surface-base-heading-color, 24%);

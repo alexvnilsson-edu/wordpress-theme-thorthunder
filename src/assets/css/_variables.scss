@@ -38,7 +38,7 @@ $heading-levels: (
   6: 14,
 );
 
-@import "./functions";
+@import "./partials/functions";
 
 $heading-level-1: get-heading-size(1);
 $heading-level-2: get-heading-size(2);

@@ -50,9 +50,9 @@ $heading-level-4: get-heading-size(4);
 $input-bg: lighten($surface-base-bg-color, 6%);
 $input-color: darken($surface-base-text-color, 12%);
 
-$input-border-color: lighten($input-bg, 6%);
+$input-border-color: darken($input-bg, 2%);
 
-$input-placeholder-color: darken($input-color, 48%);
+$input-placeholder-color: darken($input-color, 32%);
 
 $input-focus-bg: darken($input-bg, 3%);
 $input-focus-border-color: rgba(50, 100, 150, 0.5);

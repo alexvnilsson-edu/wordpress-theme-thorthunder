@@ -25,10 +25,19 @@ class Posts
     {
         $post = get_post();
         $post_date = date('Y-m-d', strtotime($post->post_date));
+        $post_permalink = get_permalink($post);
 
         $author = new Post_Author(get_the_author_meta('display_name', $post->post_author), get_the_author_meta('user_url', $post->post_author)); ?>
 <div class="post">
-    <h2><?php echo $post->post_title ?></h2>
+    <?php if (is_single()): ?>
+    <h2>
+        <?php echo $post->post_title ?>
+    </h2>
+    <?php else: ?>
+    <a href="<?php echo $post_permalink ?>" class="h2 text-body no-decoration">
+        <?php echo $post->post_title ?>
+    </a>
+    <?php endif; ?>
     <div class="content">
         <?php echo $post->post_content ?>
     </div>

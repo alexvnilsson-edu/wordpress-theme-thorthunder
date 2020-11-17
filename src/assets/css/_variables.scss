@@ -10,7 +10,7 @@ $enable-responsive-font-sizes: true;
 $primary: rgb(0, 140, 255);
 
 $base-font-family: "Roboto", sans-serif;
-$base-font-size-value: 13;
+$base-font-size-value: 14;
 $base-font-size: $base-font-size-value + px;
 
 $surface-base-bg-color: rgb(32, 32, 32);
@@ -18,6 +18,9 @@ $surface-base-heading-font-family: "Grenze Gotisch", cursive;
 $surface-base-heading-font-weight: 500;
 $surface-base-heading-color: rgb(234, 234, 234);
 $surface-base-text-color: rgb(250, 250, 250);
+
+// $rfs-base-font-size: round($base-font-size-value * 1.15);
+$rfs-rem-value: $base-font-size-value;
 
 $body-bg: $surface-base-bg-color;
 $body-color: $surface-base-text-color;

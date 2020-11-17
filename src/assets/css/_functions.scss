@@ -1,6 +1,6 @@
 @function get-heading-size($level) {
   @if map-has-key($map: $heading-levels, $key: $level) {
-    @return (map-get($heading-levels, $level) / $base-font-size-value) + em;
+    @return (map-get($heading-levels, $level) / $base-font-size-value) + rem;
   } @else {
     @error "$level är en ogiltig rubriknivå!";
   }

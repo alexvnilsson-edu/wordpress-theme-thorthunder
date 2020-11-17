@@ -28,7 +28,7 @@ $nav-page-item-normal-animation: 250ms;
 
     a.brand {
       font-family: $surface-base-heading-font-family;
-      font-size: $heading-level-1;
+      @include responsive-font-size($heading-level-1, true);
       font-weight: normal;
       color: $nav-brand-link-color;
       text-decoration: none;
@@ -67,7 +67,7 @@ $nav-page-item-normal-animation: 250ms;
             display: flex;
             padding: 0.24em 0.48em;
             font-family: $surface-base-heading-font-family;
-            font-size: $heading-level-2;
+            @include responsive-font-size($heading-level-2, true);
             font-weight: $surface-base-heading-font-weight;
             color: $nav-page-item-link-color;
 
@@ -133,7 +133,7 @@ $nav-page-item-normal-animation: 250ms;
                 margin: 0 auto;
                 padding: 0.32em 1.28em;
 
-                font-size: 1em;
+                @include responsive-font-size(1rem, true);
                 color: rgb(50, 50, 50);
                 text-align: center;
 
@@ -233,7 +233,8 @@ $nav-page-item-normal-animation: 250ms;
             display: flex;
             padding: 0.24em 0.48em;
 
-            font-size: 1.1em;
+            // font-size: 1.1em;
+            @include responsive-font-size(1.1rem, true);
             font-weight: 500;
             color: $nav-page-item-link-color;
 
@@ -280,7 +281,7 @@ $nav-page-item-normal-animation: 250ms;
                 margin: 0 auto;
                 padding: 0.32em 1.28em;
 
-                font-size: 1em;
+                @include responsive-font-size(1rem, true);
                 color: rgb(50, 50, 50);
                 text-align: center;
 

@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./vendor";
 
 @mixin heading {
   font-family: $surface-base-heading-font-family;
@@ -11,13 +12,14 @@
   .h#{$level} {
     @include heading;
     font-size: get-heading-size($level);
+    //@include responsive-font-size(get-heading-size($level), true);
   }
 }
 
 .font {
   &-size {
     &-larger {
-      font-size: 1.5em;
+      @include responsive-font-size(1.5rem, true);
     }
   }
 

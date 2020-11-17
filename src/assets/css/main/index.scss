@@ -10,9 +10,12 @@
 @import "../typography";
 @import "../spacing";
 
+html {
+  font-size: $base-font-size;
+}
+
 body {
   font-family: $base-font-family;
-  // font-size: $base-font-size;
 
   background-color: $surface-base-bg-color;
   color: $surface-base-text-color;

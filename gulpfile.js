@@ -427,6 +427,16 @@ gulp.task("javascript", function () {
         },
         optimization: {
           minimize: true,
+          splitChunks: {
+            cacheGroups: {
+              vendor: {
+                test: /node_modules/,
+                name: "vendor",
+                chunks: "all",
+                priority: -10,
+              },
+            },
+          },
         },
         module: {
           rules: [

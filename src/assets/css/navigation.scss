@@ -306,3 +306,18 @@ $nav-page-item-normal-animation: 250ms;
     }
   }
 }
+
+@mixin link-no-decoration {
+  text-decoration: none;
+}
+
+a {
+  &.no-decoration {
+    @include link-no-decoration;
+
+    &:hover,
+    &:focus {
+      @include link-no-decoration;
+    }
+  }
+}

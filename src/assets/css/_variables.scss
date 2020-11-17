@@ -1,4 +1,5 @@
 $enable-rounded: false;
+$enable-responsive-font-sizes: true;
 
 //
 // Grafisk profil
@@ -17,6 +18,9 @@ $surface-base-heading-font-family: "Grenze Gotisch", cursive;
 $surface-base-heading-font-weight: 500;
 $surface-base-heading-color: rgb(234, 234, 234);
 $surface-base-text-color: rgb(250, 250, 250);
+
+$body-bg: $surface-base-bg-color;
+$body-color: $surface-base-text-color;
 
 $text-muted: darken($surface-base-text-color, 25%);
 

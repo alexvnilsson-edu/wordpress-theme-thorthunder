@@ -1,18 +1,15 @@
 @import "./variables";
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+@mixin heading {
   font-family: $surface-base-heading-font-family;
   font-weight: 500;
   color: $surface-base-heading-color;
 }
 
 @each $level in 1, 2, 3, 4, 5, 6 {
-  h#{$level} {
+  h#{$level},
+  .h#{$level} {
+    @include heading;
     font-size: get-heading-size($level);
   }
 }

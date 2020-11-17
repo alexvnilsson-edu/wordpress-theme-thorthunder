@@ -42,7 +42,7 @@ const webpack = require("webpack");
 const webpackStream = require("webpack-stream"); // Webpack.
 
 // CSS related plugins.
-const sass = require("gulp-sass"); // Gulp plugin for Sass compilation.
+const _sass = require("gulp-sass"); // Gulp plugin for Sass compilation.
 const minifycss = require("gulp-uglifycss"); // Minifies CSS files.
 const autoprefixer = require("gulp-autoprefixer"); // Autoprefixing magic.
 const mmq = require("gulp-merge-media-queries"); // Combine matching media queries into one.
@@ -73,6 +73,8 @@ const beep = require("beepbeep");
 const template = require("gulp-template"); // Render/pre-compile Lodash templates.
 const shell = require("gulp-shell"); // Execute shell commands.
 const zip = require("gulp-zip"); // Zip files and/or folders.
+const sass = require("gulp-sass"); // gulp-sass that utilizes node-sass.
+const cleanCss = require("gulp-clean-css");
 
 // Webpack utilities/plugins.
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -188,47 +190,64 @@ gulp.task(
 );
 
 /**
- * Task: `styles`.
+ * Compile styles from Sass to CSS.
+ */
+function compileStyles() {
+  return gulp
+    .src(["src/assets/css/**/*.scss"])
+    .pipe(plumber())
+    .pipe(
+      sass({
+        includePaths: ["node_modules"],
+        outputStyle: "compressed",
+      }).on("error", sass.logError)
+    )
+    .pipe(cleanCss({ debug: true, format: "keep-breaks", compatibility: "ie8" }))
+    .pipe(gulp.dest(config.styleDestination));
+}
+
+/**
+ * Task: `webpack-styles`.
+ *
+ * @deprecated Moving away from webpack for pure SASS-compilation.
  *
  * Compiles Sass, Autoprefixes it and Minifies CSS.
  *
  *
  */
-gulp.task("styles", function () {
-  return (
-    gulp
-      .src(["src/assets/css/**/*.scss"])
-      .pipe(plumber())
-      .pipe(
-        webpackStream({
-          entry: {
-            "main/style": "./src/assets/css/main/index.scss",
-            "editor/style": "./src/assets/css/editor/index.scss",
-          },
-          mode: "production",
-          plugins: [
-            new MiniCssExtractPlugin({
-              filename: "[name].css",
-            }),
+gulp.task("webpack-styles", function () {
+  return gulp
+    .src(["src/assets/css/**/*.scss"])
+    .pipe(plumber())
+    .pipe(
+      webpackStream({
+        entry: {
+          "main/style": "./src/assets/css/main/index.scss",
+          "editor/style": "./src/assets/css/editor/index.scss",
+        },
+        mode: "production",
+        plugins: [
+          new MiniCssExtractPlugin({
+            filename: "[name].css",
+          }),
+        ],
+        module: {
+          rules: [
+            {
+              test: /\.s?css$/,
+              use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+            },
           ],
-          module: {
-            rules: [
-              {
-                test: /\.s?css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-              },
-            ],
-          },
-          stats: {
-            assets: false,
-            children: false,
-            chunks: false,
-          },
-        })
-      )
-      //.pipe(filter("*.css"))
-      .pipe(gulp.dest(config.styleDestination))
-  );
+        },
+        stats: {
+          assets: false,
+          children: false,
+          chunks: false,
+        },
+      })
+    )
+    .pipe(filter("*.css"))
+    .pipe(gulp.dest(config.styleDestination));
 });
 
 /**
@@ -550,7 +569,7 @@ gulp.task(
     "copy-wordpress-root-assets",
     "copy-wordpress-php",
     "copy-wordpress-style",
-    "styles",
+    compileStyles,
     "vendorsJS",
     "customJS",
     "javascript",
@@ -559,7 +578,10 @@ gulp.task(
     browsersync,
     () => {
       gulp.watch(config.phpSRC, gulp.parallel("copy-wordpress-php", reload)); // Reload on PHP file changes.
-      gulp.watch(config.watchStyles, gulp.parallel("copy-wordpress-style", "styles", reload)); // Reload on SCSS file changes.
+      gulp.watch(
+        config.watchStyles,
+        gulp.parallel("copy-wordpress-style", compileStyles, reload)
+      ); // Reload on SCSS file changes.
       gulp.watch(config.watchJsVendor, gulp.series("vendorsJS", reload)); // Reload on vendorsJS file changes.
       gulp.watch(config.watchJsCustom, gulp.series("customJS", reload)); // Reload on customJS file changes.
       gulp.watch(["./src/assets/js/**/*.js"], gulp.series("javascript", reload)); // Reload on mainJS file changes.

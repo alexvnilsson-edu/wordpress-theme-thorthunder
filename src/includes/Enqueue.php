@@ -31,7 +31,7 @@ class Enqueue
 
     public static function load_admin_assets()
     {
-        wp_enqueue_style('thorthunder-editor-style', get_template_directory_uri() . '/assets/css/editor/style.css', array(), '{{ template.version }}', 'all');
+        wp_enqueue_style('thorthunder-style-editor', get_template_directory_uri() . '/assets/css/editor/style.css', array(), '{{ template.version }}', 'all');
     }
 
     public static function load_assets()
@@ -41,9 +41,9 @@ class Enqueue
         wp_enqueue_style('vendor-googlefont-materialicon', 'https://fonts.googleapis.com/icon?family=Material+Icons', false);
 
         // Project
-        wp_enqueue_style('thorthunder-main-style', get_template_directory_uri() . '/assets/css/main/style.css', array(), '{{ template.version }}', 'all');
+        wp_enqueue_style('thorthunder-style-main', get_template_directory_uri() . '/assets/css/main/style.css', array(), '{{ template.version }}', 'all');
 
-        // wp_enqueue_script('thorthunder-vendor', get_template_directory_uri() . "/assets/js/vendor.min.js", array(), '{{ template.version }}', true);
-        wp_enqueue_script('thorthunder-main', get_template_directory_uri() . "/assets/js/main.js", array(), '{{ template.version }}', true);
+        wp_enqueue_script('thorthunder-script-vendor', get_template_directory_uri() . "/assets/js/vendor.js", array(), '{{ template.version }}', true);
+        wp_enqueue_script('thorthunder-script-main', get_template_directory_uri() . "/assets/js/main.js", array('thorthunder-script-vendor'), '{{ template.version }}', true);
     }
 }

@@ -1,5 +1,4 @@
-const dom = require("./vendor/dom");
-import { Navigation } from "./main/navigation";
+const { dom, Navigation } = require("./vendor");
 
 dom.documentReady(() => {
   const navigation = new Navigation();

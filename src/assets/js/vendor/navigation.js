@@ -21,7 +21,7 @@ const opts = {
   },
 };
 
-export class NavigationMobile {
+class NavigationMobile {
   /**
    *
    * @param {Navigation} parent
@@ -160,7 +160,7 @@ export class NavigationMobile {
   }
 }
 
-export class Navigation {
+class Navigation {
   constructor() {
     this.animations = {};
     this.state = {
@@ -433,3 +433,5 @@ export class Navigation {
     }
   }
 }
+
+export { Navigation, NavigationMobile };

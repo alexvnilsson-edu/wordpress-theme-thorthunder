@@ -579,7 +579,7 @@ gulp.task(
       gulp.watch(config.phpSRC, gulp.parallel("copy-wordpress-php", reload)); // Reload on PHP file changes.
       gulp.watch(
         config.watchStyles,
-        gulp.parallel("copy-wordpress-style", compileStyles, reload)
+        gulp.parallel("copy-wordpress-style", "compile-styles", reload)
       ); // Reload on SCSS file changes.
       gulp.watch(config.watchJsVendor, gulp.series("vendorsJS", reload)); // Reload on vendorsJS file changes.
       gulp.watch(config.watchJsCustom, gulp.series("customJS", reload)); // Reload on customJS file changes.

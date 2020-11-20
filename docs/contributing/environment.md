@@ -17,7 +17,7 @@ composer require --dev php-stubs/wordpress-stubs
 
 > Assuming Visual Studio Code
 
-Append `wordpress` to `intelephense.stubs` in VS Code's configuration.
+Append `wordpress` to `intelephense.stubs` in VS Code's configuration. See [PHP Intelephense](https://github.com/bmewburn/vscode-intelephense) for further guidance.
 
 ```json
 {

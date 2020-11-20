@@ -184,9 +184,11 @@ gulp.task(
 );
 
 /**
+ * Task: `compile-styles`
+ *
  * Compile styles from Sass to CSS.
  */
-function compileStyles() {
+gulp.task("compile-styles", function () {
   return gulp
     .src(["src/assets/css/**/*.scss"])
     .pipe(plumber())
@@ -198,7 +200,7 @@ function compileStyles() {
     )
     .pipe(cleanCss({ debug: true, format: "keep-breaks", compatibility: "ie8" }))
     .pipe(gulp.dest(config.styleDestination));
-}
+});
 
 /**
  * Task: `webpack-styles`.
@@ -242,6 +244,63 @@ gulp.task("webpack-styles", function () {
     )
     .pipe(filter("*.css"))
     .pipe(gulp.dest(config.styleDestination));
+});
+
+/**
+ * Task: `compile-scripts`
+ */
+gulp.task("compile-scripts", function () {
+  return gulp
+    .src(["src/assets/js/**/*.js"])
+    .pipe(plumber())
+    .pipe(
+      webpackStream({
+        context: path.resolve(__dirname, "src", "assets"),
+        entry: {
+          vendor: "./js/vendor/index.js",
+          main: "./js/main.js",
+          "blocks/contact": "./js/blocks/contact.js",
+        },
+        mode: "production",
+        output: {
+          filename: "[name].js",
+        },
+        optimization: {
+          minimize: true,
+          // minimizer: [new UglifyJsPlugin()],
+          splitChunks: {
+            cacheGroups: {
+              vendor: {
+                test: /node_modules/,
+                name: "vendor",
+                chunks: "initial",
+                priority: -10,
+              },
+            },
+          },
+        },
+        module: {
+          rules: [
+            {
+              test: /\.(js|jsx)$/,
+              exclude: /(node_modules|bower_components)/,
+              use: {
+                loader: "babel-loader",
+                options: {
+                  presets: ["@babel/preset-env", "@babel/preset-react"],
+                },
+              },
+            },
+          ],
+        },
+        stats: {
+          assets: false,
+          children: false,
+          chunks: false,
+        },
+      })
+    )
+    .pipe(gulp.dest(config.jsMainDestination));
 });
 
 /**
@@ -421,60 +480,6 @@ gulp.task("mainJS", () => {
 });
 
 /**
- * Task: `javascript`
- */
-gulp.task("javascript", function () {
-  return gulp
-    .src(["src/assets/js/**/*.js"])
-    .pipe(plumber())
-    .pipe(
-      webpackStream({
-        entry: {
-          main: "./src/assets/js/main.js",
-          "blocks/contact": "./src/assets/js/blocks/contact.js",
-        },
-        mode: "production",
-        output: {
-          filename: "[name].js",
-        },
-        optimization: {
-          minimize: true,
-          splitChunks: {
-            cacheGroups: {
-              vendor: {
-                test: /node_modules/,
-                name: "vendor",
-                chunks: "all",
-                priority: -10,
-              },
-            },
-          },
-        },
-        module: {
-          rules: [
-            {
-              test: /\.(js|jsx)$/,
-              exclude: /(node_modules|bower_components)/,
-              use: {
-                loader: "babel-loader",
-                options: {
-                  presets: ["@babel/preset-env", "@babel/preset-react"],
-                },
-              },
-            },
-          ],
-        },
-        stats: {
-          assets: false,
-          children: false,
-          chunks: false,
-        },
-      })
-    )
-    .pipe(gulp.dest(config.jsMainDestination));
-});
-
-/**
  * Task: `images`.
  *
  * Minifies PNG, JPEG, GIF and SVG images.
@@ -563,10 +568,10 @@ gulp.task(
     "copy-wordpress-root-assets",
     "copy-wordpress-php",
     "copy-wordpress-style",
-    compileStyles,
+    "compile-styles",
     "vendorsJS",
     "customJS",
-    "javascript",
+    "compile-scripts",
     "images",
     "wordpress-composer",
     browsersync,
@@ -578,7 +583,7 @@ gulp.task(
       ); // Reload on SCSS file changes.
       gulp.watch(config.watchJsVendor, gulp.series("vendorsJS", reload)); // Reload on vendorsJS file changes.
       gulp.watch(config.watchJsCustom, gulp.series("customJS", reload)); // Reload on customJS file changes.
-      gulp.watch(["./src/assets/js/**/*.js"], gulp.series("javascript", reload)); // Reload on mainJS file changes.
+      gulp.watch(["./src/assets/js/**/*.js"], gulp.series("compile-scripts", reload)); // Reload on mainJS file changes.
       gulp.watch(config.imgSRC, gulp.series("images", reload)); // Reload on customJS file changes.
     }
   )

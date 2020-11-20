@@ -13,11 +13,13 @@ $base-font-family: "Roboto", sans-serif;
 $base-font-size-value: 14;
 $base-font-size: $base-font-size-value + px;
 
-$surface-base-bg-color: rgb(32, 32, 32);
 $surface-base-heading-font-family: "Grenze Gotisch", cursive;
 $surface-base-heading-font-weight: 500;
+
+$surface-base-bg-color: rgb(32, 32, 32);
 $surface-base-heading-color: rgb(234, 234, 234);
 $surface-base-text-color: rgb(250, 250, 250);
+$surface-base-text-color-inverted: rgb(5, 5, 5);
 
 // $rfs-base-font-size: round($base-font-size-value * 1.15);
 $rfs-rem-value: $base-font-size-value;
@@ -49,16 +51,14 @@ $heading-level-4: get-heading-size(4);
 
 $input-bg: lighten($surface-base-bg-color, 6%);
 $input-color: darken($surface-base-text-color, 12%);
-
-$input-border-color: darken($input-bg, 2%);
-
+$input-border-color: darken($input-bg, 4%);
 $input-placeholder-color: darken($input-color, 32%);
 
-$input-focus-bg: darken($input-bg, 3%);
+$input-focus-bg: darken($input-bg, 4%);
 $input-focus-border-color: rgba(50, 100, 150, 0.5);
 
 // Länkar
 
-$link-color: $primary;
+$link-color: lighten($primary, 12%);
 $link-decoration: none;
 $link-hover-color: darken($link-color, 6%);

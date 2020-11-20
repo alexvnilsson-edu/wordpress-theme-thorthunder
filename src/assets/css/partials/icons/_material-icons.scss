@@ -1,0 +1,82 @@
+// Material Icons
+//
+// Variables, mixins, functions and selectors for Material Icons.
+
+/// Variables
+
+$_icon-size-unit: px;
+$_icon-sizes: (14, 18, 24, 36, 48);
+
+$_icon-color: $surface-base-text-color;
+$_icon-transparency-factor: 0.12;
+
+/// Functions
+
+@function _get-color-themes-list(
+  $baseColor: $_icon-color,
+  $transparencyFactor: $_icon-transparency-factor
+) {
+  $baseColorInactive: transparentize($baseColor, $transparencyFactor);
+
+  $baseInvertedColor: invert($baseColor);
+  $baseInvertedColorInactive: transparentize($baseInvertedColor, $transparencyFactor);
+
+  $color-themes-list: (
+    dark: (
+      $baseColor,
+      $baseColorInactive,
+    ),
+    light: (
+      $baseInvertedColor,
+      $baseInvertedColorInactive,
+    ),
+  );
+
+  @return $color-themes-list;
+}
+
+/// Mixins
+
+@mixin icon-sizes {
+  @each $size in $_icon-sizes {
+    &.md-#{$size} {
+      font-size: $size + $_icon-size-unit;
+    }
+  }
+}
+
+@mixin icon-colors {
+  @each $name, $theme in _get-color-themes-list() {
+    &.md-#{$name} {
+      color: nth($theme, 1);
+
+      &.md-inactive {
+        color: nth($theme, 2);
+      }
+    }
+  }
+}
+
+/// Selectors
+
+.material-icons {
+  @include icon-sizes();
+
+  @include icon-colors();
+
+  // &.md-dark {
+  //   color: $md-dark;
+
+  //   &.md-inactive {
+  //     color: $md-dark-inactive;
+  //   }
+  // }
+
+  // &.md-light {
+  //   color: $md-light;
+
+  //   &.md-inactive {
+  //     color: $md-light-inactive;
+  //   }
+  // }
+}

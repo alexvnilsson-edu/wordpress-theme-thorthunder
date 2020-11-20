@@ -54,18 +54,22 @@
         <?php echo $post->post_content ?>
     </div>
 
-    <div class="footer">
+    <footer class="footer">
         <div class="field">
-            <i class="material-icons">person</i>
-            <a href="<?php echo $author->url ?>"><?php echo $author->name ?></a>
+            <i class="material-icons md-14">person</i>
+            <div class="ml-1">
+                <a href="<?php echo $author->url ?>"><?php echo $author->name ?></a>
+            </div>
         </div>
 
         <div class="field">
-            <i class="material-icons">calendar_today</i>
-            <span><?php echo $post_date ?></span>
+            <i class="material-icons md-14">calendar_today</i>
+            <div class="ml-1">
+                <span><?php echo $post_date ?></span>
+            </div>
         </div>
-    </div>
+    </footer>
 </div>
 <?php
-    }
+}
 }

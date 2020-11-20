@@ -54,10 +54,10 @@
 ?>
 
 <body <?php body_class()?>>
-    <nav class="container navbar primary">
+    <nav role="banner" class="container navbar primary">
         <a class="brand" href="<?php echo get_home_url(); ?>">
             <?php if (has_custom_logo()): ?>
-            <img src="<?php echo $logo[0] ?>" width="<?php echo $logo[1] ?>" height="<?php echo $logo[2] ?>"
+            <img src="<?php echo $logo[0] ?>" width="<?php echo $logo[1] ?>" height="<?php echo $logo[2] ?>" role="logo"
                 alt="Logotyp" />
             <?php else: ?>
             <span class="name"><?php bloginfo('name');?></span>
@@ -73,4 +73,4 @@
         <?php Header::render_nav_menu('header');?>
     </nav>
 
-    <div id="content">
+    <div role="article" id="content">

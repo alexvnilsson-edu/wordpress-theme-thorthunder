@@ -27,7 +27,7 @@
             }
             $menu_items = Menu::get_nav_menu_items($locations[$menu_location_name]);
         ?>
-<div class="<?php echo implode(' ', array('nav-wrapper', $container_name)) ?>">
+<div role="navigation" aria-label="Main" class="<?php echo implode(' ', array('nav-wrapper', $container_name)) ?>">
     <?php if ($menu_items && !empty($menu_items)): ?>
     <ul class="nav">
         <?php foreach ($menu_items as $item): ?>

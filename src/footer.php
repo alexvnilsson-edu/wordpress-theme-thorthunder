@@ -16,7 +16,9 @@
 
 <div class="container footer">
     <div class="field copyright">
-        &copy; <?php echo date("Y") ?><?php bloginfo('name');?>
+        &copy; <?php echo date("Y") ?>
+        <?php echo " "; ?>
+        <?php bloginfo('name');?>
     </div>
 
     <div class="field separate"></div>
